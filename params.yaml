@@ -1,0 +1,5 @@
+urls:
+    base: "https://rickandmortyapi.com/api/"
+    locations: "locations/"
+    episodes: "episodes/"
+    charactes: "characters/"
