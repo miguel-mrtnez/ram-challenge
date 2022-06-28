@@ -1,5 +1,6 @@
-import yaml
 import requests
+
+import yaml
 
 
 with open("params.yaml", "r") as file:
