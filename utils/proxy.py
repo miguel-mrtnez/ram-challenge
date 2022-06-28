@@ -26,7 +26,7 @@ class Proxy:
 
 
 if __name__ == "__main__":
-    locations = Base(params["urls"]["locations"])
+    locations = Proxy(params["urls"]["locations"])
     print("Count: ", locations.count)
     print("Pages", locations.pages)
     
