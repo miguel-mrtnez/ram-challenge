@@ -6,6 +6,11 @@ import yaml
 with open("params.yaml", "r") as file:
     params = yaml.load(file, Loader=yaml.FullLoader)
 
+
+"""
+This entity manages the obtention of the desired data from the API.
+"""
+
 class Proxy:
     base_url = params["urls"]["base"]
     
@@ -20,22 +25,26 @@ class Proxy:
         return requests.get(self.url + "?page=" + str(id)).json()
 
     def names(self):
+        """
+        Returns a generator whose elements are the names of the entities 
+        found in every page.
+        """
         for page in range(1, self.pages + 1):
             response = self.get_page(page)
             for item in response["results"]:
                 yield item["name"]
 
+    def items(self):
+        """
+        Returns a generator whose elements are the json objects that codify
+        the entities found in every page.
+        """
+        for page in range(1, self.pages + 1):
+            response = self.get_page(page)
+            for item in response["results"]:
+                yield item
 
-if __name__ == "__main__":
-    locations = Proxy(params["urls"]["locations"])
-    print("Count: ", locations.count)
-    print("Pages", locations.pages)
-    
-    counter = 0
-    for name in locations.names():
-        print(name)
-        counter += 1
 
-    print("Total: ", counter)
-
-    
+"""
+Reference: https://github.com/curiousrohan/ramapi
+"""
