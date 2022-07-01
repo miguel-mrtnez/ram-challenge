@@ -1,11 +1,9 @@
 # ram-challenge
 
 ## Instalación
-El programa utiliza el un entorno virtual soportado por la [librería](https://pipenv-es.readthedocs.io/es/latest/) `pipenv`. Para instalarla en un sistema Windows, se puede mendiante la ejecución del siguiente comando:
+El programa utiliza un entorno virtual soportado por la [librería](https://pipenv-es.readthedocs.io/es/latest/) `pipenv`. Para instalarla en un sistema Windows se debe ejecutar el comando `pip install pipenv`.
 
-```pip install pipenv```
-
-Con una consola ubicada en el directorio base, se debe ejecutar el comando `pipenv shell` para ingresar al entorno virtual. Han de instalarse todas las dependencias listadas en el archivo `Pipfile`, que incluye una versión específica de Python.
+Con una consola ubicada en el directorio base, se debe ejecutar `pipenv shell` para ingresar al entorno virtual. Han de instalarse todas las dependencias listadas en el archivo `Pipfile`, que incluye una versión específica de Python. Lo anterior se realiza con `pipenv install <package_name>`. En este caso, el único paquete a instalar es `pyyaml`.
 
 ## Módulos
 En `utils/` se pueden encontrar los siguientes módulos:
