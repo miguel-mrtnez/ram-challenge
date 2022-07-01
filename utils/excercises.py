@@ -3,10 +3,10 @@ from utils.proxy import Proxy
 
 def char_counter(locations_names, episodes_names_, characters_names):
 
-    i_counter = e_counter = c_counter = 0
+    l_counter = e_counter = c_counter = 0
 
     for location in locations_names:
-        i_counter += location.count("l") + location.count("L")
+        l_counter += location.count("l") + location.count("L")
 
     for episode in episodes_names_:
         e_counter += episode.count("e") + episode.count("E")
@@ -17,7 +17,7 @@ def char_counter(locations_names, episodes_names_, characters_names):
     results = [
         {
             "char": "l",
-            "count": i_counter,
+            "count": l_counter,
             "resource": "location"
         },
         {
