@@ -1,21 +1,17 @@
 from utils.proxy import Proxy
 
 
-def char_counter(locations_url, episodes_url, characters_url):
-
-    locations = Proxy(locations_url)
-    episodes = Proxy(episodes_url)
-    characters = Proxy(characters_url)
+def char_counter(locations_names, episodes_names_, characters_names):
 
     i_counter = e_counter = c_counter = 0
 
-    for location in locations.names():
+    for location in locations_names:
         i_counter += location.count("l") + location.count("L")
 
-    for episode in episodes.names():
+    for episode in episodes_names_:
         e_counter += episode.count("e") + episode.count("E")
 
-    for character in characters.names():
+    for character in characters_names:
         c_counter += character.count("c") + character.count("C")
 
     results = [
@@ -37,20 +33,18 @@ def char_counter(locations_url, episodes_url, characters_url):
     ]
     return results
 
-def episode_locations(episodes_url, characters_url):
-    episodes = Proxy(episodes_url)
-    characters = Proxy(characters_url)
+def episode_locations(episodes, characters):
 
     dict_episodes = dict()
     
-    for i in episodes.items():
+    for i in episodes:
         dict_episodes[i["id"]] = {
             "name": i["name"],
             "episode": i["episode"],
             "locations": set()
         }
 
-    for char in characters.items():
+    for char in characters:
         for ep in char["episode"]:
             dict_episodes[int(ep[40:])]["locations"].add(char["origin"]["name"])
 
