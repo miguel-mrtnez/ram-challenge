@@ -31,7 +31,7 @@ def char_counter():
 
     results = [
         {
-            "char": "i",
+            "char": "l",
             "count": i_counter,
             "resource": "location"
         },
