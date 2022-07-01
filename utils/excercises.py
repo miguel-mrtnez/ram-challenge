@@ -1,33 +1,22 @@
-import yaml
-
 from utils.proxy import Proxy
 
 
-with open("params.yaml", "r") as file:
-    params = yaml.load(file, Loader=yaml.FullLoader)
+def char_counter(locations_url, episodes_url, characters_url):
 
+    locations = Proxy(locations_url)
+    episodes = Proxy(episodes_url)
+    characters = Proxy(characters_url)
 
-def char_counter():
-
-    locations = Proxy(params["urls"]["locations"])
-    episodes = Proxy(params["urls"]["episodes"])
-    characters = Proxy(params["urls"]["characters"])
-
-    i_counter = 0
-    e_counter = 0
-    c_counter = 0
+    i_counter = e_counter = c_counter = 0
 
     for location in locations.names():
-        i_counter += location.count("l")
-        i_counter += location.count("L")
+        i_counter += location.count("l") + location.count("L")
 
     for episode in episodes.names():
-        e_counter += episode.count("e")
-        e_counter += episode.count("E")
+        e_counter += episode.count("e") + episode.count("E")
 
     for character in characters.names():
-        c_counter += character.count("c")
-        c_counter += character.count("C")
+        c_counter += character.count("c") + character.count("C")
 
     results = [
         {
@@ -48,9 +37,9 @@ def char_counter():
     ]
     return results
 
-def episode_locations():
-    episodes = Proxy(params["urls"]["episodes"])
-    characters = Proxy(params["urls"]["characters"])
+def episode_locations(episodes_url, characters_url):
+    episodes = Proxy(episodes_url)
+    characters = Proxy(characters_url)
 
     dict_episodes = dict()
     

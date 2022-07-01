@@ -26,13 +26,15 @@ class Proxy:
 
     def names(self):
         """
-        Returns a generator whose elements are the names of the entities 
+        Returns a list whose elements are the names of the entities 
         found in every page.
         """
+        result = []
         for page in range(1, self.pages + 1):
             response = self.get_page(page)
             for item in response["results"]:
-                yield item["name"]
+                result.append(item["name"])
+        return result
 
     def items(self):
         """
