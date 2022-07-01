@@ -16,6 +16,11 @@ En `utils/` se pueden encontrar los siguientes módulos:
 
 Además, en el directorio principal se encuentra el archivo `main.py`, que se encarga de ejecutar el programa, y generar un archivo de nombre `output.json` con el resultado.
 
+### Testing
+Se agregaron módulos de tests unitarios en el directorio `testing`. Pueden ser ejecutados de manera independiente, o bien en conjunto, con el comando:
+
+`python -m unittest <path_test_1> <path_test_2> ...`
+
 ### Nota sobre la clase `Proxy`
 Si bien existe una [librería](https://rickandmortyapi.com/documentation/#python) ya implementada que contiene cierta lógica de conección con la API de Rick and Morty, se optó por una solución propia por las siguentes razones:
 - El código útil de la librería consistía solo en un [módulo](https://github.com/curiousrohan/ramapi/blob/master/ramapi/ramapi.py).
