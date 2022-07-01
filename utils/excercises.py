@@ -1,5 +1,3 @@
-from utils.proxy import Proxy
-
 
 def char_counter(locations_names, episodes_names_, characters_names):
 
