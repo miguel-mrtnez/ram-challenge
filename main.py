@@ -27,18 +27,14 @@ locations = Proxy(locations_url)
 episodes = Proxy(episodes_url)
 characters = Proxy(characters_url)
 
-locations_names = locations.names()
-episodes_names = episodes.names()
-characters_names = characters.names()
-
-results_cc = char_counter(locations_names, episodes_names, characters_names)
+results_cc = char_counter(locations.names, episodes.names, characters.names)
 timer_cc.stop()
 response_cc = ("Char counter", timer_cc.get_time(), results_cc)
 
 
 # Episode locations excecution
 timer_el.start()
-results_el = episode_locations(episodes.items(), characters.items())
+results_el = episode_locations(episodes.items, characters.items)
 timer_el.stop()
 response_el = ("Episode locations", timer_el.get_time(), results_el)
 

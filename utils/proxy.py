@@ -19,32 +19,29 @@ class Proxy:
 
         first_response = requests.get(self.url).json()
         self.count = first_response["info"]["count"]
-        self.pages = first_response["info"]["pages"]
-    
-    def get_page(self, id):
-        return requests.get(self.url + "?page=" + str(id)).json()
 
-    def names(self):
+        self.items = self.get_items()
+        self.names = self.get_names()
+
+    def get_items(self):
         """
-        Returns a list whose elements are the names of the entities 
-        found in every page.
+        Returns a list whose elements are the json objects that codify
+        all the entities.
         """
         result = []
-        for page in range(1, self.pages + 1):
-            response = self.get_page(page)
-            for item in response["results"]:
-                result.append(item["name"])
+        response = requests.get(self.url + str([i for i in range(1, self.count + 1)])).json()
+        for item in response:
+            result.append(item)
         return result
 
-    def items(self):
+    def get_names(self):
         """
-        Returns a generator whose elements are the json objects that codify
-        the entities found in every page.
+        Returns a list whose elements are the names of all the entities.
         """
-        for page in range(1, self.pages + 1):
-            response = self.get_page(page)
-            for item in response["results"]:
-                yield item
+        result = []
+        for item in self.items:
+            result.append(item["name"])
+        return result
 
 
 """
