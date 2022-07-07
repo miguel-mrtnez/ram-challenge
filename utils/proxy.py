@@ -20,9 +20,6 @@ class Proxy:
         first_response = requests.get(self.url).json()
         self.count = first_response["info"]["count"]
 
-        self.items = self.get_items()
-        self.names = self.get_names()
-
     def get_items(self):
         """
         Returns a list whose elements are the json objects that codify
@@ -39,7 +36,8 @@ class Proxy:
         Returns a list whose elements are the names of all the entities.
         """
         result = []
-        for item in self.items:
+        response = requests.get(self.url + str([i for i in range(1, self.count + 1)])).json()
+        for item in response:
             result.append(item["name"])
         return result
 
