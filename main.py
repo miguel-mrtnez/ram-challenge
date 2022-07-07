@@ -27,7 +27,7 @@ locations = Proxy(locations_url)
 episodes = Proxy(episodes_url)
 characters = Proxy(characters_url)
 
-results_cc = char_counter(locations.new_get_names(), episodes.new_get_names(), characters.new_get_names())
+results_cc = char_counter(locations.get_names(), episodes.get_names(), characters.get_names())
 timer_cc.stop()
 response_cc = ("Char counter", timer_cc.get_time(), results_cc)
 
