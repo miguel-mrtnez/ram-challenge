@@ -4,13 +4,16 @@ def char_counter(locations_names, episodes_names, characters_names):
     l_counter = e_counter = c_counter = 0
 
     for location in locations_names:
-        l_counter += location.count("l") + location.count("L")
+        location = location.lower()
+        l_counter += location.count("l")
 
     for episode in episodes_names:
-        e_counter += episode.count("e") + episode.count("E")
+        episode = episode.lower()
+        e_counter += episode.count("e")
 
     for character in characters_names:
-        c_counter += character.count("c") + character.count("C")
+        character = character.lower()
+        c_counter += character.count("c")
 
     results = [
         {
