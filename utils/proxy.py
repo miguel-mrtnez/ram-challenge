@@ -41,7 +41,31 @@ class Proxy:
             result.append(item["name"])
         return result
 
+    def get_money(self, params):
+        names = self.get_names()
+        usd = 0
+
+        for raw_name in names:
+            name = raw_name.lower()
+
+            for item in params:
+                current = 0
+                for letter in item[1]:
+                    current += name.count(letter)
+                current = item[0] * current
+                usd += current
+
+        print("Total CLP: ", usd)
+
 
 """
 Reference: https://github.com/curiousrohan/ramapi
 """
+
+if __name__ == '__main__':
+    characters_url = params["urls"]["characters"]
+    characters = Proxy(characters_url)
+
+    letters = [(1, 'aeiou'), (2, 'chpx')]
+
+    characters.get_money(letters)
